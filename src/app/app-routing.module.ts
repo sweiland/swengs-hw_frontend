@@ -4,6 +4,8 @@ import {MemberListComponent} from './member-list/member-list.component';
 import {MemberFormComponent} from './member-form/member-form.component';
 import {MembersResolver} from './resolvers/members.resolver';
 import {MemberResolver} from './resolvers/member.resolver';
+import {HabitListComponent} from './habit-list/habit-list.component';
+import {HabitFormComponent} from './habit-form/habit-form.component';
 
 
 const routes: Routes = [
@@ -14,7 +16,11 @@ const routes: Routes = [
     },
     {
         path: 'member-form/:id', component: MemberFormComponent, resolve: {member: MemberResolver, memberOptions: MembersResolver}
-    }
+    },
+    {path: 'habit-list', component: HabitListComponent},
+    {
+        path: 'habit-form', component: HabitFormComponent, resolve: {memberOptions: MembersResolver}
+    },
 ];
 
 @NgModule({

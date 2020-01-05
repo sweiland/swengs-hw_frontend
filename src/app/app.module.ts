@@ -19,12 +19,16 @@ import {
     MatToolbarModule
 } from '@angular/material';
 import {MemberFormComponent} from './member-form/member-form.component';
+import { HabitListComponent } from './habit-list/habit-list.component';
+import { HabitFormComponent } from './habit-form/habit-form.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MemberListComponent,
-        MemberFormComponent
+        MemberFormComponent,
+        HabitListComponent,
+        HabitFormComponent
     ],
     imports: [
         BrowserModule,

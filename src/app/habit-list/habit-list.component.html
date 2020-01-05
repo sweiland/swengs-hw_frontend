@@ -1,0 +1,28 @@
+<table mat-table [dataSource]="habits">
+
+    <ng-container matColumnDef="start_date">
+        <th mat-header-cell *matHeaderCellDef>Start Date</th>
+        <td mat-cell *matCellDef="let habit">{{habit.start_date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="end_date">
+        <th mat-header-cell *matHeaderCellDef>End Date</th>
+        <td mat-cell *matCellDef="let habit">{{habit.end_date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let habit">{{habit.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let habit">
+            <button mat-button [routerLink]="'/habit-form/' + habit.id">Edit</button>
+            <button mat-button (click)="removeHabit(habit)">Delete</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
