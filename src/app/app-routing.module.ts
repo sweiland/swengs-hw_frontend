@@ -6,6 +6,8 @@ import {MembersResolver} from './resolvers/members.resolver';
 import {MemberResolver} from './resolvers/member.resolver';
 import {HabitListComponent} from './habit-list/habit-list.component';
 import {HabitFormComponent} from './habit-form/habit-form.component';
+import {TypeResolver} from './resolvers/type.resolver';
+import {HabitResolver} from './resolvers/habit.resolver';
 
 
 const routes: Routes = [
@@ -19,7 +21,12 @@ const routes: Routes = [
     },
     {path: 'habit-list', component: HabitListComponent},
     {
-        path: 'habit-form', component: HabitFormComponent, resolve: {memberOptions: MembersResolver}
+        path: 'habit-form', component: HabitFormComponent, resolve: {memberOptions: MembersResolver, typeOptions: TypeResolver}
+    },
+    {
+        path: 'habit-form/:id',
+        component: HabitFormComponent,
+        resolve: {habit: HabitResolver, memberOptions: MembersResolver, typeOptions: TypeResolver}
     },
 ];
 

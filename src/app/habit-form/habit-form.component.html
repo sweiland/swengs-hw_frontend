@@ -1,1 +1,41 @@
-<p>habit-form works!</p>
+<form [formGroup]="habitFormGroup" class="habit-form">
+    <mat-form-field>
+        <input matInput [matDatepicker]="datepicker" placeholder="Start Date" required formControlName="start_date">
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker></mat-datepicker>
+        <mat-hint align="end">Start Date for the journey to this habit</mat-hint>
+        <mat-error *ngIf="habitFormGroup.controls.start_date.hasError('required')">Start Date is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="datepicker2" placeholder="End Date" required formControlName="end_date">
+        <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker2></mat-datepicker>
+        <mat-hint align="end">End Date for the journey to this habit</mat-hint>
+        <mat-error *ngIf="habitFormGroup.controls.end_date.hasError('required')">End Date is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="name" matInput placeholder="Name" required type="text">
+        <mat-hint align="end">Name of the Habit</mat-hint>
+        <mat-error *ngIf="habitFormGroup.controls.name.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select formControlName="member" placeholder="Member">
+            <mat-option *ngFor="let memberOption of memberOptions"
+                        [value]="memberOption.id">{{memberOption.first_name + ' ' + memberOption.last_name}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">Add Member here</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select formControlName="type" placeholder="Type">
+            <mat-option *ngFor="let typeOption of typeOptions"
+                        [value]="typeOption.id">{{typeOption.name}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">Add Type here</mat-hint>
+    </mat-form-field>
+    <mat-card-actions align="center">
+        <button (click)="createHabit()" [disabled]="!habitFormGroup.valid" color="primary" mat-raised-button>
+            <span *ngIf="!habitFormGroup.controls.id.value">Create</span>
+            <span *ngIf="habitFormGroup.controls.id.value">Update</span>
+        </button>
+    </mat-card-actions>
+</form>

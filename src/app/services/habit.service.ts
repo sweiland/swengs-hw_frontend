@@ -16,4 +16,16 @@ export class HabitService {
     remove(habit: any) {
         return this.http.delete('/api/habit/' + habit.id + '/delete');
     }
+
+    updateHabit(habit: any) {
+        return this.http.patch('/api/habit/' + habit.id + '/update', habit);
+    }
+
+    createHabit(habit: any) {
+        return this.http.post('/api/habit/create', habit);
+    }
+
+    getHabit(id) {
+        return this.http.get('/api/habit/' + id + '/get');
+    }
 }

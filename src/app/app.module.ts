@@ -10,9 +10,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {
     MatButtonModule,
     MatCardModule,
-    MatCheckboxModule,
+    MatCheckboxModule, MatDatepickerModule,
     MatInputModule,
-    MatMenuModule,
+    MatMenuModule, MatNativeDateModule,
     MatSelectModule,
     MatSidenavModule,
     MatTableModule,
@@ -21,6 +21,7 @@ import {
 import {MemberFormComponent} from './member-form/member-form.component';
 import { HabitListComponent } from './habit-list/habit-list.component';
 import { HabitFormComponent } from './habit-form/habit-form.component';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,10 @@ import { HabitFormComponent } from './habit-form/habit-form.component';
         MatInputModule,
         MatSelectModule,
         MatCheckboxModule,
-        MatCardModule
+        MatCardModule,
+        MatDatepickerModule,
+        MatMomentDateModule
+
     ],
     providers: [],
     bootstrap: [AppComponent]
