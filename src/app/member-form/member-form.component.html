@@ -1,0 +1,39 @@
+<form [formGroup]="memberFormGroup" class="member-form">
+    <mat-form-field>
+        <input formControlName="first_name" matInput placeholder="First Name" required type="text">
+        <mat-hint align="end">First Name of the Member</mat-hint>
+        <mat-error *ngIf="memberFormGroup.controls.first_name.hasError('required')">First Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="last_name" matInput placeholder="Last Name" required type="text">
+        <mat-hint align="end">Last Name of the Member</mat-hint>
+        <mat-error *ngIf="memberFormGroup.controls.last_name.hasError('required')">Last Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="email" matInput placeholder="Email" required type="email">
+        <mat-hint align="end">Email of the Member</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="level" matInput placeholder="Level" required type="number">
+        <mat-hint align="end">Level of the Member</mat-hint>
+        <mat-error *ngIf="memberFormGroup.controls.level.hasError('required')">Level is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="score" matInput placeholder="Score" required type="number">
+        <mat-hint align="end">Score of the Member</mat-hint>
+        <mat-error *ngIf="memberFormGroup.controls.score.hasError('required')">Score is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select formControlName="friends" multiple placeholder="Friends">
+            <mat-option *ngFor="let memberOption of memberOptions"
+                        [value]="memberOption.id">{{memberOption.first_name + ' ' + memberOption.last_name}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">Add Friends here</mat-hint>
+    </mat-form-field>
+    <mat-card-actions align="center">
+        <button (click)="createMember()" [disabled]="!memberFormGroup.valid" color="primary" mat-raised-button>
+            <span *ngIf="!memberFormGroup.controls.id.value">Create</span>
+            <span *ngIf="memberFormGroup.controls.id.value">Update</span>
+        </button>
+    </mat-card-actions>
+</form>
