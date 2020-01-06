@@ -10,22 +10,22 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {
     MatButtonModule,
     MatCardModule,
-    MatCheckboxModule, MatDatepickerModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
     MatInputModule,
-    MatMenuModule, MatNativeDateModule,
+    MatMenuModule,
     MatSelectModule,
     MatSidenavModule,
     MatTableModule,
     MatToolbarModule
 } from '@angular/material';
 import {MemberFormComponent} from './member-form/member-form.component';
-import { HabitListComponent } from './habit-list/habit-list.component';
-import { HabitFormComponent } from './habit-form/habit-form.component';
+import {HabitListComponent} from './habit-list/habit-list.component';
+import {HabitFormComponent} from './habit-form/habit-form.component';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {JwtModule} from '@auth0/angular-jwt';
-import { LoginComponent } from './login/login.component';
-import { LogourComponent } from './logour/logour.component';
-import { LogoutComponent } from './logout/logout.component';
+import {LoginComponent} from './login/login.component';
+import {LogoutComponent} from './logout/logout.component';
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -39,7 +39,6 @@ export function tokenGetter() {
         HabitListComponent,
         HabitFormComponent,
         LoginComponent,
-        LogourComponent,
         LogoutComponent
     ],
     imports: [

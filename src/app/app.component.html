@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-    <mat-toolbar>
+    <mat-toolbar *ngIf="isLoggedIn">
         <button [matMenuTriggerFor]="memberMenu" mat-button>Member</button>
         <mat-menu #memberMenu="matMenu">
             <button mat-menu-item routerLink="member-list">List Members</button>

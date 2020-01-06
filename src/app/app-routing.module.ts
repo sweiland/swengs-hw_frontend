@@ -9,25 +9,32 @@ import {HabitFormComponent} from './habit-form/habit-form.component';
 import {TypeResolver} from './resolvers/type.resolver';
 import {HabitResolver} from './resolvers/habit.resolver';
 import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './auth.guard';
 
 
 const routes: Routes = [
-    {path: '', redirectTo: 'member-list', pathMatch: 'full'},
-    {path: 'member-list', component: MemberListComponent},
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: 'member-list', component: MemberListComponent, canActivate: [AuthGuard]},
     {
-        path: 'member-form', component: MemberFormComponent, resolve: {memberOptions: MembersResolver}
+        path: 'member-form', component: MemberFormComponent, resolve: {memberOptions: MembersResolver}, canActivate: [AuthGuard]
     },
     {
-        path: 'member-form/:id', component: MemberFormComponent, resolve: {member: MemberResolver, memberOptions: MembersResolver}
+        path: 'member-form/:id',
+        component: MemberFormComponent,
+        resolve: {member: MemberResolver, memberOptions: MembersResolver},
+        canActivate: [AuthGuard]
     },
-    {path: 'habit-list', component: HabitListComponent},
+    {path: 'habit-list', component: HabitListComponent, canActivate: [AuthGuard]},
     {
-        path: 'habit-form', component: HabitFormComponent, resolve: {memberOptions: MembersResolver, typeOptions: TypeResolver}
+        path: 'habit-form',
+        component: HabitFormComponent,
+        resolve: {memberOptions: MembersResolver, typeOptions: TypeResolver},
+        canActivate: [AuthGuard]
     },
     {
         path: 'habit-form/:id',
         component: HabitFormComponent,
-        resolve: {habit: HabitResolver, memberOptions: MembersResolver, typeOptions: TypeResolver}
+        resolve: {habit: HabitResolver, memberOptions: MembersResolver, typeOptions: TypeResolver}, canActivate: [AuthGuard]
     },
     {path: 'login', component: LoginComponent},
 ];
