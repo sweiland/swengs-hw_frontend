@@ -28,6 +28,7 @@ export class HabitFormComponent implements OnInit {
             name: ['Dance more!'],
             member: [1],
             type: [1],
+            priority: [null]
         });
 
         if (data.habit) {

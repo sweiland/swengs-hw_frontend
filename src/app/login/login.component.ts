@@ -1,30 +1,31 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
 import {UserService} from '../services/user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
-  loginFormGroup;
+    loginFormGroup;
+    verified = false;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
-  }
+    constructor(private fb: FormBuilder, private userService: UserService) {
+    }
 
-  ngOnInit() {
-    this.loginFormGroup = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-  }
+    ngOnInit() {
+        this.loginFormGroup = this.fb.group({
+            username: ['', Validators.required],
+            password: ['', Validators.required],
+            captcha: [''] // proof of concept, hCaptcha prohibits localhost and 127.0.0.1 as referrers.
+            // Validators.required had to be disabled and the captcha doesn't actually do anything in this version.
+        });
+    }
 
-  login() {
-    this.userService.login(this.loginFormGroup.value);
-  }
+    login() {
+        this.userService.login(this.loginFormGroup.value);
+    }
 
 }

@@ -11,7 +11,7 @@ import {HabitService} from '../services/habit.service';
 export class HabitListComponent implements OnInit {
 
   habits: any[];
-  displayedColumns = ['start_date', 'end_date', 'name', 'id'];
+  displayedColumns = ['start_date', 'end_date', 'name', 'priority', 'id'];
 
   constructor(private memberService: MemberService, private typeService: TypeService, private habitService: HabitService) {
   }
