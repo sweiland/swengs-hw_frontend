@@ -8,6 +8,7 @@ import {HabitListComponent} from './habit-list/habit-list.component';
 import {HabitFormComponent} from './habit-form/habit-form.component';
 import {TypeResolver} from './resolvers/type.resolver';
 import {HabitResolver} from './resolvers/habit.resolver';
+import {LoginComponent} from './login/login.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
         component: HabitFormComponent,
         resolve: {habit: HabitResolver, memberOptions: MembersResolver, typeOptions: TypeResolver}
     },
+    {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({

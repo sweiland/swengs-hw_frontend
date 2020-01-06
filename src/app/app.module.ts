@@ -22,6 +22,14 @@ import {MemberFormComponent} from './member-form/member-form.component';
 import { HabitListComponent } from './habit-list/habit-list.component';
 import { HabitFormComponent } from './habit-form/habit-form.component';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {JwtModule} from '@auth0/angular-jwt';
+import { LoginComponent } from './login/login.component';
+import { LogourComponent } from './logour/logour.component';
+import { LogoutComponent } from './logout/logout.component';
+
+export function tokenGetter() {
+    return localStorage.getItem('access_token');
+}
 
 @NgModule({
     declarations: [
@@ -29,7 +37,10 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
         MemberListComponent,
         MemberFormComponent,
         HabitListComponent,
-        HabitFormComponent
+        HabitFormComponent,
+        LoginComponent,
+        LogourComponent,
+        LogoutComponent
     ],
     imports: [
         BrowserModule,
@@ -47,8 +58,13 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
         MatCheckboxModule,
         MatCardModule,
         MatDatepickerModule,
-        MatMomentDateModule
-
+        MatMomentDateModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter,
+                whitelistedDomains: ['localhost:4200']
+            }
+        })
     ],
     providers: [],
     bootstrap: [AppComponent]

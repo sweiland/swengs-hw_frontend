@@ -12,6 +12,7 @@
         <mat-datepicker #datepicker2></mat-datepicker>
         <mat-hint align="end">End Date for the journey to this habit</mat-hint>
         <mat-error *ngIf="habitFormGroup.controls.end_date.hasError('required')">End Date is required</mat-error>
+        <mat-error *ngIf="habitFormGroup.controls.end_date.hasError('dateCheck')">End Date must be after Start Date</mat-error>
     </mat-form-field>
     <mat-form-field>
         <input formControlName="name" matInput placeholder="Name" required type="text">

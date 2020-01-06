@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HabitService} from '../services/habit.service';
-import {FormBuilder, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, ValidatorFn} from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-habit-form',
@@ -22,16 +23,22 @@ export class HabitFormComponent implements OnInit {
         this.typeOptions = data.typeOptions;
         this.habitFormGroup = this.fb.group({
             id: [null],
-            start_date: [new Date()],
-            end_date: [null],
-            name: ['Peter'],
-            member: [null],
+            start_date: [moment()],
+            end_date: [null, [this.dateValidator()]],
+            name: ['Dance more!'],
+            member: [1],
             type: [1],
         });
 
         if (data.habit) {
             this.habitFormGroup.patchValue(data.habit);
         }
+    }
+
+    dateValidator(): ValidatorFn {
+        return (control: AbstractControl): { [key: string]: any } | null => {
+            return (control.value <= moment()) ? {dateCheck: {value: control.value}} : null;
+        };
     }
 
     createHabit() {
